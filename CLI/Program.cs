@@ -7,12 +7,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
         foreach(string arg in args)
         {
             Console.WriteLine(arg);
         }
-        ApplicationService.FlattenJSON("path-to-source", "path-to-output");
-        Console.ReadKey();
+        string sourcePath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Source\\i18n.json";
+        string outputPath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Output\\result.json";
+        //Console.WriteLine("Hello, World!");
+        ApplicationService.FlattenJSON(sourcePath, outputPath);
+        //Console.ReadKey();
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj": {}
+    "d:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj": {
+    "d:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj",
+        "projectUniqueName": "d:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj",
         "projectName": "CLI",
-        "projectPath": "D:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj",
+        "projectPath": "d:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj",
         "packagesPath": "C:\\Users\\BASTIAN\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\Repositories\\Data-Reformatter\\CLI\\obj\\",
+        "outputPath": "d:\\Programming\\Repositories\\Data-Reformatter\\CLI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BASTIAN\\AppData\\Roaming\\NuGet\\NuGet.Config"

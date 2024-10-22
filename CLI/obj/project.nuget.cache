@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZDuDlNZkpHe26rtYuRzWsEDci12BM5GOEoA+tF68qu2yOs1aDo+bp+2EdYYuhLWvjXykQtl91AtNmndVsBkMXQ==",
+  "dgSpecHash": "yvp+bTrg4H15/OOTDckSSZRkGZkv3JBXEu73s0FQdf6E5glgJP2rASWOE27nPobqIObgstqtiWKixINlnw6aIQ==",
   "success": true,
-  "projectFilePath": "D:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj",
+  "projectFilePath": "d:\\Programming\\Repositories\\Data-Reformatter\\CLI\\CLI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

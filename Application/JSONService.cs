@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -20,19 +20,20 @@ public static class JSONService
         return result;
     }
 
-    public static JObject Flatten(JObject source, string existingPath = "")
+    public static JObject Flatten(JObject source, string cumulativeKey = "")
     {
         var result = new JObject();
-        foreach(KeyValuePair<string, JToken> kvp in source)
+        foreach(KeyValuePair<string, JToken> entry in source)
         {
-            //string name = kvp.Key;
-            JToken value = kvp.Value;
-            string path = existingPath == string.Empty ? kvp.Key : $"{existingPath}.{kvp.Key}";
-            //var type = value.Type;
+            if(entry.Key.Contains('.'))
+            {
+                throw new Exception("Forbidden character in key");
+            }
+            JToken value = entry.Value;
+            string newKey = cumulativeKey == string.Empty ? entry.Key : $"{cumulativeKey}.{entry.Key}";
             if(value.Type == JTokenType.Object)
             {
-                //JObject innerObj = (JObject)value;
-                var innerFlat = Flatten((JObject)value, path);
+                var innerFlat = Flatten((JObject)value, newKey);
                 foreach(JToken innerChild in innerFlat.Children())
                 {
                     result.Add(innerChild);
@@ -40,7 +41,39 @@ public static class JSONService
             }
             if(value.Type == JTokenType.String)
             {
-                result.Add(path, value);
+                result.Add(newKey, value);
+            }
+        }
+        return result;
+    }
+
+    public static JObject Unflatten(JObject source)
+    {
+        var result = new JObject();
+        foreach(KeyValuePair<string, JToken> sourceProperty in source)
+        {
+            var keySegments = sourceProperty.Key.Split('.');
+            JObject currentObject = result;
+            JObject nextObject = currentObject;
+            JProperty currentResultProperty;
+            for(int i = 0; i < keySegments.Count(); i++)
+            {
+                if(currentObject.ContainsKey(keySegments[i]))
+                {
+                    nextObject = (JObject)currentObject.Property(keySegments[i]).Value;
+                }
+                if(!currentObject.ContainsKey(keySegments[i]))
+                {
+                    nextObject = new JObject();
+                    currentResultProperty = new JProperty(keySegments[i], nextObject);
+                    currentObject.Add(currentResultProperty);
+                    if(i == keySegments.Count() - 1)
+                    {
+                        currentResultProperty.Value = sourceProperty.Value;
+                        continue;
+                    }
+                }
+                currentObject = nextObject;
             }
         }
         return result;

@@ -7,14 +7,21 @@ class Program
 {
     static void Main(string[] args)
     {
+        //Console.WriteLine("Hello, World!");
         foreach(string arg in args)
         {
             Console.WriteLine(arg);
         }
-        string sourcePath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Source\\i18n.json";
-        string outputPath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Output\\result.json";
-        //Console.WriteLine("Hello, World!");
-        ApplicationService.FlattenJSON(sourcePath, outputPath);
+        
+        // string nestedSourcePath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Source\\nested.json";
+        // string flattenedOutputPath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Output\\flattened.json";
+        // ApplicationService.FlattenJSON(nestedSourcePath, flattenedOutputPath);
+        
+        string flatSourcePath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Source\\flat.json";
+        string unflattenedOutputPath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Output\\unflattened.json";
+        ApplicationService.UnflattenJSON(flatSourcePath, unflattenedOutputPath);
+        
+        
         //Console.ReadKey();
     }
 }

@@ -6,18 +6,23 @@ using Newtonsoft.Json.Linq;
 
 namespace DataReformatter.Application;
 
-public static class JSONService
+public static class JsonService
 {
-    public static JObject Parse(string content)
+    public static JObject Parse(string source)
     {
-        var jsonObj = JObject.Parse(content);
-        return jsonObj;
+        var result = JObject.Parse(source);
+        return result;
     }
 
     public static string Serialize(JObject source)
     {
         string result = JsonConvert.SerializeObject(source, Formatting.Indented);
         return result;
+    }
+
+    public static Dictionary<string, string> ToDictionary(JObject source)
+    {
+        return source.ToObject<Dictionary<string, string>>();
     }
 
     public static JObject Flatten(JObject source, string cumulativeKey = "")
@@ -44,6 +49,7 @@ public static class JSONService
                 result.Add(newKey, value);
             }
         }
+        
         return result;
     }
 

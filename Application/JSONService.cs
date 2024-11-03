@@ -30,12 +30,14 @@ public static class JsonService
 
     public static JObject Map(Dictionary<string, string> source)
     {
-        return JObject.FromObject(source);
+        var result = JObject.FromObject(source);
+        return result;
     }
 
     public static Dictionary<string, string> Map(this JObject source)
     {
-        return source.ToObject<Dictionary<string, string>>();
+        var result = source.ToObject<Dictionary<string, string>>();
+        return result;
     }
 
     public static JObject Flatten(this JObject source, string cumulativeKey = "")

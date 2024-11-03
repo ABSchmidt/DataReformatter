@@ -32,10 +32,20 @@ public static class ApplicationService
         var sourceDict = JsonService
                             .Parse(sourceContent)
                             .Flatten()
-                            .ToDictionary();
+                            .Map();
         var serialized = CsvService.Serialize(sourceDict);
         FileService.WriteFile(outputPath, serialized);
     }
 
-
+    public static void CsvToJson(string sourcePath, string outputPath)
+    {
+        Console.WriteLine("CsvToJson");
+        var sourceContent = FileService.ReadFile(sourcePath);
+        var sourceDict = CsvService.Parse(sourceContent);
+        var serializedJson = JsonService
+                                .Map(sourceDict)
+                                .Unflatten()
+                                .Serialize();
+        FileService.WriteFile(outputPath, serializedJson);
+    }
 }

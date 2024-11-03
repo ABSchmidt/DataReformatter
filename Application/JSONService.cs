@@ -20,7 +20,12 @@ public static class JsonService
         return result;
     }
 
-    public static Dictionary<string, string> ToDictionary(this JObject source)
+    public static JObject Map(Dictionary<string, string> source)
+    {
+        return JObject.FromObject(source);
+    }
+
+    public static Dictionary<string, string> Map(this JObject source)
     {
         return source.ToObject<Dictionary<string, string>>();
     }

@@ -12,6 +12,7 @@ public static class CsvService
     public static Dictionary<string,string> Parse(string source)
     {
         var result = new Dictionary<string,string>();
+        char separator = ';';
 
         // Split the content by lines to get each row
         string[] rows = source.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -19,7 +20,7 @@ public static class CsvService
         foreach (string row in rows)
         {
             // Split each row by comma to get each cell
-            string[] cells = row.Split(new[] { ',' }, StringSplitOptions.None);
+            string[] cells = row.Split(new[] { separator }, StringSplitOptions.None);
             
             // Convert cells to a list and add it to the result
             //List<string> rowList = new List<string>(cells);

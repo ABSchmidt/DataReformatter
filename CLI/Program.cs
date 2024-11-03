@@ -21,9 +21,14 @@ class Program
         // string unflattenedOutputPath = "D:\\Programming\\Repositories\\DataReformatter\\Assets\\Output\\unflattened.json";
         // ApplicationService.UnflattenJSON(flatSourcePath, unflattenedOutputPath);
         
-        string nestedSourcePath = "C:\\Users\\AndersBastianChristi\\Privat\\Repos\\DataReformatter\\Assets\\Source\\nested.json";
-        string csvOutputPath = "C:\\Users\\AndersBastianChristi\\Privat\\Repos\\DataReformatter\\Assets\\Output\\result.csv";
-        ApplicationService.JsonToCsv(nestedSourcePath, csvOutputPath);
+        // string nestedSourcePath = "C:\\Users\\AndersBastianChristi\\Privat\\Repos\\DataReformatter\\Assets\\Source\\nested.json";
+        // string csvOutputPath = "C:\\Users\\AndersBastianChristi\\Privat\\Repos\\DataReformatter\\Assets\\Output\\json-to-csv.csv";
+        // ApplicationService.JsonToCsv(nestedSourcePath, csvOutputPath);
+        
+        string csvSourcePath = "C:\\Users\\AndersBastianChristi\\Privat\\Repos\\DataReformatter\\Assets\\Source\\flat.csv";
+        string unflattenedJsonOutputPath = "C:\\Users\\AndersBastianChristi\\Privat\\Repos\\DataReformatter\\Assets\\Output\\csv-to-json.json";
+        ApplicationService.CsvToJson(csvSourcePath, unflattenedJsonOutputPath);
+        
         //Console.ReadKey();
     }
 }

@@ -14,18 +14,18 @@ public static class JsonService
         return result;
     }
 
-    public static string Serialize(JObject source)
+    public static string Serialize(this JObject source)
     {
         string result = JsonConvert.SerializeObject(source, Formatting.Indented);
         return result;
     }
 
-    public static Dictionary<string, string> ToDictionary(JObject source)
+    public static Dictionary<string, string> ToDictionary(this JObject source)
     {
         return source.ToObject<Dictionary<string, string>>();
     }
 
-    public static JObject Flatten(JObject source, string cumulativeKey = "")
+    public static JObject Flatten(this JObject source, string cumulativeKey = "")
     {
         var result = new JObject();
         foreach(KeyValuePair<string, JToken> entry in source)
@@ -53,7 +53,7 @@ public static class JsonService
         return result;
     }
 
-    public static JObject Unflatten(JObject source)
+    public static JObject Unflatten(this JObject source)
     {
         var result = new JObject();
         foreach(KeyValuePair<string, JToken> sourceProperty in source)

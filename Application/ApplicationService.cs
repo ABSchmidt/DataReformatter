@@ -18,9 +18,10 @@ public static class ApplicationService
     {
         Console.WriteLine("UnflattenJson");
         var sourceContent = FileService.ReadFile(sourcePath);
-        var sourceJson = JsonService.Parse(sourceContent);
-        var unflattenedJson = JsonService.Unflatten(sourceJson);
-        var serialized = JsonService.Serialize(unflattenedJson);
+        var serialized = JsonService
+                            .Parse(sourceContent)
+                            .Unflatten()
+                            .Serialize();
         FileService.WriteFile(outputPath, serialized);
     }
 
@@ -28,10 +29,13 @@ public static class ApplicationService
     {
         Console.WriteLine("JsonToCsv");
         var sourceContent = FileService.ReadFile(sourcePath);
-        var sourceJson = JsonService.Parse(sourceContent);
-        var flattenedJson = JsonService.Flatten(sourceJson);
-        var sourceDict = JsonService.ToDictionary(flattenedJson);
+        var sourceDict = JsonService
+                            .Parse(sourceContent)
+                            .Flatten()
+                            .ToDictionary();
         var serialized = CsvService.Serialize(sourceDict);
         FileService.WriteFile(outputPath, serialized);
     }
+
+
 }

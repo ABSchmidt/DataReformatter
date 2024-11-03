@@ -54,24 +54,23 @@ public static class JSONService
         {
             var keySegments = sourceProperty.Key.Split('.');
             JObject currentObject = result;
+            JProperty resultProperty;
             JObject nextObject = currentObject;
-            JProperty currentResultProperty;
             for(int i = 0; i < keySegments.Count(); i++)
             {
                 if(currentObject.ContainsKey(keySegments[i]))
                 {
-                    nextObject = (JObject)currentObject.Property(keySegments[i]).Value;
+                    currentObject = (JObject)currentObject.Property(keySegments[i]).Value;
+                    continue;
                 }
-                if(!currentObject.ContainsKey(keySegments[i]))
+                
+                nextObject = new JObject();
+                resultProperty = new JProperty(keySegments[i], nextObject);
+                currentObject.Add(resultProperty);
+                if(i == keySegments.Count() - 1)
                 {
-                    nextObject = new JObject();
-                    currentResultProperty = new JProperty(keySegments[i], nextObject);
-                    currentObject.Add(currentResultProperty);
-                    if(i == keySegments.Count() - 1)
-                    {
-                        currentResultProperty.Value = sourceProperty.Value;
-                        continue;
-                    }
+                    resultProperty.Value = sourceProperty.Value;
+                    continue;
                 }
                 currentObject = nextObject;
             }

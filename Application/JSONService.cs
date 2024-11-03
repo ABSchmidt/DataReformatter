@@ -10,12 +10,20 @@ public static class JsonService
 {
     public static JObject Parse(string source)
     {
-        var result = JObject.Parse(source);
-        return result;
+        try
+        {
+            var result = JObject.Parse(source);
+            return result;
+        }
+        catch(JsonException ex)
+        {
+            throw new ParsingException("An error occurred parsing json.", ex);
+        }
     }
 
     public static string Serialize(this JObject source)
     {
+        if(source == null) throw new ArgumentNullException("source");
         string result = JsonConvert.SerializeObject(source, Formatting.Indented);
         return result;
     }
